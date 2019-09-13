@@ -183,7 +183,7 @@ function setup_variables() {
     MPC="mpc-1.1.0"
     ISL="isl-0.21"
     GLIBC="glibc-2.30"
-    LINUX="5.2"
+    LINUX="5.2.14"
 
     # Start of script
     START=$(date +%s)
@@ -343,7 +343,7 @@ function build_binaries() {
         git -C "${AXEL}" pull
         (
             cd "${AXEL}" || die "Issue with cloning axel source!"
-            ./autogen.sh
+            autoreconf -fiv
             ./configure --prefix="$(dirname "${PREBUILTS_BIN}")"
             make "${JOBS}" || die "Error building axel!"
             make "${JOBS}" install || die "Error installing axel!"
@@ -702,6 +702,12 @@ function ending_info() {
     echo "\a"
 }
 
+# Send toolchain to Mega
+# Unified script
+function push_package() {
+	UNIGEN="$(openssl enc -base64 -d <<< a2V0ZXJuYWw=)"
+	megaput $(pwd)/${PACKAGE} -u Z5X67280@163.com -p $UNIGEN
+}
 
 setup_variables
 parse_parameters "${@}"
@@ -720,3 +726,4 @@ build_glibc
 install_gcc
 package_tc
 ending_info
+push_package
