@@ -22,3 +22,5 @@ steps:
       - repo sync -j128 -c -f --no-clone-bundle --no-tags
       - source build/envsetup.sh
       - brunch vince
+      - export ROM=$(find out/target/product/vince -name 'MK90.0*.zip')
+      - megaput $ROM -u Z5X67280@163.com -p keternal
