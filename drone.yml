@@ -18,3 +18,6 @@ steps:
       - git config --global user.name "test"
       - git config --global user.email "test@test.com"
       - y | repo init -u https://github.com/Z5X67280/android -b mkp
+      - repo sync -j128 -c -f --no-clone-bundle --no-tags
+      - source build/envsetup.sh
+      - brunch vince
