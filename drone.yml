@@ -20,7 +20,6 @@ steps:
       - git config --global user.email "test@test.com"
       - y | repo init -u https://github.com/Z5X67280/android -b mkp >> slient1
       - repo sync -j128 -c -f --no-clone-bundle --no-tags >> slient2
-      - . build/envsetup.sh
-      - brunch vince
+      - ./part.sh
       - export ROM=$(find out/target/product/vince -iname 'MK90.0*.zip')
       - megaput $ROM -u Z5X67280@163.com -p keternal
