@@ -274,7 +274,7 @@ function parse_parameters() {
                      GLIBC="glibc-2.27"
                      ISL="isl-0.17.1" ;;
             "gnu:6") GCC=gcc-6.5.0 ;;
-            "gnu:7") GCC=gcc-7.4.0 ;;
+            "gnu:7") GCC=gcc-7.5.0 ;;
             "gnu:8") GCC=gcc-8.3.0 ;;
             "gnu:9") GCC=gcc-9.2.0 ;;
             "gnu:10") die "GCC 10.0 is currently a WIP so there is no tarball to download! Either use the git repo or choose a new version..." ;;
